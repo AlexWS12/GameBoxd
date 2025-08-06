@@ -69,9 +69,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-[Click here to watch the walkthrough](https://i.imgur.com/o8WQUsD.gif)
+[Click here to watch the walkthrough](https://i.imgur.com/NA0kabN.gif)
 
-![Walkthrough GIF](https://i.imgur.com/o8WQUsD.gif)
+![Walkthrough GIF](https://i.imgur.com/NA0kabN.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ScreenToGif...  
