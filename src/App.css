@@ -18,6 +18,7 @@ body {
   max-width: 1200px;
 }
 
+/* Enhanced Game Card Styling */
 .game-card {
   background: rgba(30, 41, 59, 0.95);
   border: 1px solid rgba(71, 85, 105, 0.3);
@@ -42,6 +43,7 @@ body {
   border-color: rgba(99, 102, 241, 0.4);
 }
 
+/* Professional Star Rating System */
 .star-rating {
   display: flex;
   align-items: center;
@@ -80,6 +82,7 @@ body {
   stroke-width: 1.5;
 }
 
+/* Display-only stars with better visibility */
 .stars-display {
   display: flex;
   align-items: center;
@@ -100,6 +103,7 @@ body {
   fill: #fbbf24;
 }
 
+/* Professional Button Styling */
 .btn-primary {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   border: none;
@@ -122,6 +126,7 @@ body {
   box-shadow: 0 2px 8px 0 rgba(99, 102, 241, 0.3);
 }
 
+/* Enhanced Form Controls */
 input, textarea, select {
   background: rgba(15, 23, 42, 0.9) !important;
   border: 2px solid rgba(71, 85, 105, 0.3) !important;
@@ -149,6 +154,7 @@ input:focus, textarea:focus, select:focus {
   background: rgba(15, 23, 42, 0.95) !important;
 }
 
+/* Enhanced Labels */
 label {
   display: block;
   font-size: 14px !important;
@@ -158,6 +164,7 @@ label {
   letter-spacing: 0.025em;
 }
 
+/* Professional Button Styling */
 button {
   font-weight: 600;
   letter-spacing: 0.025em;
@@ -187,6 +194,7 @@ button:disabled {
   transform: none !important;
 }
 
+/* Theme Section Enhancement */
 .theme-selector {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(71, 85, 105, 0.2);
@@ -228,6 +236,7 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
+/* Enhanced Filter Section */
 .filters-section {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(71, 85, 105, 0.2);
@@ -237,6 +246,7 @@ button:disabled {
   margin-bottom: 24px;
 }
 
+/* Search Enhancement */
 .search-container {
   position: relative;
 }
@@ -255,6 +265,7 @@ button:disabled {
   z-index: 10;
 }
 
+/* Professional Sort Buttons */
 .sort-button {
   display: flex;
   align-items: center;
@@ -283,6 +294,7 @@ button:disabled {
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
+/* Enhanced Post Cards */
 .post-card {
   background: rgba(30, 41, 59, 0.9);
   border: 1px solid rgba(71, 85, 105, 0.3);
@@ -304,6 +316,7 @@ button:disabled {
     0 0 0 1px rgba(99, 102, 241, 0.2);
 }
 
+/* Professional Link Styling */
 a {
   color: #60a5fa;
   text-decoration: none;
@@ -314,6 +327,7 @@ a:hover {
   color: #3b82f6;
 }
 
+/* Specific link colors for better contrast */
 .post-card a h3 {
   color: #f8fafc !important;
 }
@@ -326,6 +340,7 @@ a:hover {
   color: #a78bfa !important;
 }
 
+/* Enhanced Modal Styling */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -351,6 +366,7 @@ a:hover {
     0 0 0 1px rgba(99, 102, 241, 0.2);
 }
 
+/* Enhanced Loading Animation */
 .loading {
   display: inline-block;
   width: 20px;
@@ -365,6 +381,7 @@ a:hover {
   to { transform: rotate(360deg); }
 }
 
+/* Professional Animations */
 .fade-in {
   animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -389,6 +406,7 @@ a:hover {
   }
 }
 
+/* Professional Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -407,10 +425,12 @@ a:hover {
   background: #6366f1;
 }
 
+/* Smooth Transitions */
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
 }
 
+/* Enhanced Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -428,6 +448,7 @@ p {
   margin-bottom: 16px;
 }
 
+/* Enhanced Modal Animations */
 .modal-backdrop {
   backdrop-filter: blur(8px);
   animation: fadeIn 0.3s ease;
@@ -448,6 +469,7 @@ p {
   }
 }
 
+/* Enhanced Badge Styling */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -460,6 +482,7 @@ p {
   border: 1px solid rgba(71, 85, 105, 0.3);
 }
 
+/* Mobile Responsive Improvements */
 @media (max-width: 768px) {
   .game-card, .post-card {
     margin: 0 8px;
@@ -488,6 +511,7 @@ p {
   }
 }
 
+/* Enhanced Loading States */
 .loading-container {
   display: flex;
   align-items: center;
@@ -524,6 +548,7 @@ p {
   }
 }
 
+/* Enhanced Form Layout */
 .form-grid {
   display: grid;
   gap: 24px;
@@ -541,11 +566,13 @@ p {
   }
 }
 
+/* Professional Color Scheme Adjustments */
 .text-gray-300 { color: #cbd5e1 !important; }
 .text-gray-400 { color: #94a3b8 !important; }
 .text-gray-500 { color: #64748b !important; }
 .text-white { color: #f8fafc !important; }
 
+/* Enhanced spacing */
 .space-y-6 > * + * {
   margin-top: 24px;
 }

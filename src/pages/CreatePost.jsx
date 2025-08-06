@@ -12,18 +12,16 @@ const CreatePost = () => {
   const [loading, setLoading] = useState(false)
   const [repostLoading, setRepostLoading] = useState(false)
   const [repostPostId, setRepostPostId] = useState('')
-const [formData, setFormData] = useState({
-  title: '',
-  content: '',
-  image_url: '',
-  game_title: '',
-  rating: 0,
-  platform: '',
-  genre: '',
-  secret_key: '',
-  repost_of: null
-})
-
+  const [formData, setFormData] = useState({
+    title: '',
+    content: '',
+    image_url: '',
+    game_title: '',
+    rating: 0,
+    platform: '',
+    genre: '',
+    secret_key: ''
+  })
 
   const platforms = ['PC', 'PlayStation 5', 'Xbox Series X/S', 'Nintendo Switch', 'PlayStation 4', 'Xbox One', 'Mobile', 'Other']
   const genres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Puzzle', 'Sports', 'Racing', 'Fighting', 'Horror', 'Indie', 'Other']
@@ -47,17 +45,16 @@ const [formData, setFormData] = useState({
         return
       }
 
-setFormData({
-  title: `Re: ${data.title}`,
-  content: data.content || '',
-  image_url: data.image_url || '',
-  game_title: data.game_title || '',
-  rating: null,
-  platform: data.platform || '',
-  genre: data.genre || '',
-  secret_key: '',
-  repost_of: data.id
-})
+      setFormData({
+        title: `Re: ${data.title}`,
+        content: data.content || '',
+        image_url: data.image_url || '',
+        game_title: data.game_title || '',
+        rating: data.rating || 0,
+        platform: data.platform || '',
+        genre: data.genre || '',
+        secret_key: ''
+      })
     } catch (error) {
       console.error('Error fetching post for repost:', error)
       alert('Error loading post for repost')
@@ -90,21 +87,19 @@ setFormData({
 
     setLoading(true)
     try {
-const { data, error } = await supabase
-  .from('posts')
-  .insert([{
-    title: formData.title,
-    content: formData.content || null,
-    image_url: formData.image_url || null,
-    game_title: formData.game_title || null,
-    rating: formData.rating > 0 ? parseInt(formData.rating) : null,
-    platform: formData.platform || null,
-    genre: formData.genre || null,
-    secret_key: formData.secret_key || null,
-    repost_of: formData.repost_of || null
-  }])
-  .select()
-
+      const { data, error } = await supabase
+        .from('posts')
+        .insert([{
+          title: formData.title,
+          content: formData.content || null,
+          image_url: formData.image_url || null,
+          game_title: formData.game_title || null,
+          rating: formData.rating > 0 ? parseInt(formData.rating) : null,
+          platform: formData.platform || null,
+          genre: formData.genre || null,
+          secret_key: formData.secret_key || null
+        }])
+        .select()
 
       if (error) throw error
 

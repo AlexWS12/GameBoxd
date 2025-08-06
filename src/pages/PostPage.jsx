@@ -8,18 +8,6 @@ const PostPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [post, setPost] = useState(null)
-  const [originalPost, setOriginalPost] = useState(null)
-  const fetchOriginalPost = async (originalId) => {
-  const { data, error } = await supabase
-    .from('posts')
-    .select('id, title')
-    .eq('id', originalId)
-    .single()
-
-  if (!error) {
-    setOriginalPost(data)
-  }
-}
   const [comments, setComments] = useState([])
   const [loading, setLoading] = useState(true)
   const [newComment, setNewComment] = useState('')
@@ -28,33 +16,30 @@ const PostPage = () => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [hasUpvoted, setHasUpvoted] = useState(false)
 
-useEffect(() => {
-  fetchPost()
-  fetchComments()
-  const upvoted = localStorage.getItem(`upvoted_${id}`)
-  setHasUpvoted(!!upvoted)
-}, [id])
+  useEffect(() => {
+    fetchPost()
+    fetchComments()
+    // Check if user has upvoted (using localStorage for demo)
+    const upvoted = localStorage.getItem(`upvoted_${id}`)
+    setHasUpvoted(!!upvoted)
+  }, [id])
 
-const fetchPost = async () => {
-  try {
-    const { data, error } = await supabase
-      .from('posts')
-      .select('*')
-      .eq('id', id)
-      .single()
+  const fetchPost = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .eq('id', id)
+        .single()
 
-    if (error) throw error
-    setPost(data)
-
-    if (data?.repost_of) {
-      await fetchOriginalPost(data.repost_of)
+      if (error) throw error
+      setPost(data)
+    } catch (error) {
+      console.error('Error fetching post:', error)
+    } finally {
+      setLoading(false)
     }
-  } catch (error) {
-    console.error('Error fetching post:', error)
-  } finally {
-    setLoading(false)
   }
-}
 
   const fetchComments = async () => {
     try {
@@ -154,7 +139,7 @@ const fetchPost = async () => {
         url: window.location.href
       })
     } else {
-      // copy to clipboard
+      // Fallback: copy to clipboard
       navigator.clipboard.writeText(window.location.href)
       alert('Link copied to clipboard!')
     }
@@ -190,6 +175,7 @@ const fetchPost = async () => {
 
   return (
     <div className="max-w-4xl mx-auto">
+      {/* Post Content */}
       <div className="game-card p-8 mb-8 fade-in">
         <div className="flex justify-between items-start mb-6">
           <div className="flex-1">
@@ -229,20 +215,6 @@ const fetchPost = async () => {
             />
           )}
         </div>
-
-{originalPost && (
-  <div className="mb-4">
-    <p className="text-sm text-gray-400">
-      Reposted from{' '}
-      <Link 
-        to={`/post/${originalPost.id}`} 
-        className="underline text-indigo-400 hover:text-indigo-300"
-      >
-        {originalPost.title}
-      </Link>
-    </p>
-  </div>
-)}
 
         {post.content && (
           <div className="mb-6">
@@ -314,12 +286,14 @@ const fetchPost = async () => {
         </div>
       </div>
 
+      {/* Comments Section */}
       <div className="game-card p-6">
         <h3 className="text-xl font-semibold text-white mb-6 flex items-center space-x-2">
           <MessageCircle className="w-5 h-5" />
           <span>Comments ({comments.length})</span>
         </h3>
 
+        {/* Add Comment Form */}
         <form onSubmit={handleAddComment} className="mb-6">
           <div className="mb-4">
             <input
@@ -346,6 +320,7 @@ const fetchPost = async () => {
           </button>
         </form>
 
+        {/* Comments List */}
         <div className="space-y-4">
           {comments.length === 0 ? (
             <p className="text-gray-400 text-center py-8">No comments yet. Be the first to comment!</p>
@@ -363,6 +338,7 @@ const fetchPost = async () => {
         </div>
       </div>
 
+      {/* Delete Confirmation Modal */}
       {showDeleteConfirm && (
         <div className="modal-overlay">
           <div className="modal-content">

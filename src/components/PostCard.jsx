@@ -82,6 +82,7 @@ const PostCard = ({ post }) => {
         </div>
       </Link>
       
+      {/* Repost Button - Shows on hover */}
       <button
         onClick={handleRepost}
         className="absolute top-4 right-4 p-2 bg-gray-800/80 hover:bg-indigo-600 text-gray-400 hover:text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 backdrop-blur-sm"
